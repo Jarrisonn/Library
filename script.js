@@ -3,6 +3,7 @@ const container = document.querySelector(".container");
 const bookContainer = document.createElement("div");
 const addBookBtn = document.createElement("button");
 bookContainer.classList.add("bookcontainer");
+const form = document.getElementById("form")
 
 function Book(title, author, numberOfPages, read) {
   this.title = title;
@@ -56,17 +57,16 @@ addBookToLibrary = () => {
   container.appendChild(addBookBtn);
 };
 
-createForm = () => {
-    addBookBtn.addEventListener("click", () => {
-        //create form to add new book
-        const form = document.createElement("form");
-        form.classList.add("form");
-        console.log("form added");
-        container.appendChild(form);
+showForm = () => {
+    addBookBtn.addEventListener("click", e => {
+        e.preventDefault();
+        form.classList.toggle("form")
+        form.classList.toggle("hidden")
+        
       });
 }
 
 
 addBookToLibrary();
 displayBooks();
-createForm();
+showForm();
