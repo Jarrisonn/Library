@@ -2,8 +2,21 @@ let library = [];
 const container = document.querySelector(".container");
 const bookContainer = document.createElement("div");
 const addBookBtn = document.createElement("button");
-bookContainer.classList.add("bookcontainer");
 const form = document.getElementById("form")
+const closeAddBookBtn = document.createElement("button");
+const bookDiv = document.createElement("div");
+const titleInput = document.getElementById("titleinput");
+const authorInput = document.getElementById("authorinput");
+const numberOfPagesInput = document.getElementById("nopinput");
+const hasBeenRead = document.getElementById("read");
+const notBeenRead = document.getElementById("notread");
+const addBookSubmitButton = document.getElementById("submitbook")
+
+bookContainer.classList.add("bookcontainer");
+
+
+
+
 
 function Book(title, author, numberOfPages, read) {
   this.title = title;
@@ -35,25 +48,38 @@ const joshBook = new Book(
 );
 
 displayBooks = () => {
-  library.forEach((book) => {
+  library.forEach((book, i) => {
     const bookDiv = document.createElement("div");
     bookDiv.classList.add("book");
     bookDiv.innerText = `Title: ${book.title}, 
         Author: ${book.author}, 
         Number of Pages: ${book.numberOfPages}, 
         Have i read the book?: ${book.read}`;
+
+    //create delete button
+    const deleteButton = document.createElement("button")
+    deleteButton.innerText = "X"
+    deleteButton.addEventListener("click", () => {
+        library.splice(i,1);
+        console.log(library)
+        bookDiv.remove(i);
+        
+
+    })
+    bookDiv.appendChild(deleteButton)
     bookContainer.appendChild(bookDiv);
   });
   container.appendChild(bookContainer);
-  
-
 };
+
 
 addBookToLibrary = () => {
   library.push(lordOfTheRings, harryPotter, joshBook);
-  
   addBookBtn.textContent = "Add New Book";
   addBookBtn.classList.add("addbtn");
+ 
+
+
   container.appendChild(addBookBtn);
 };
 
@@ -62,11 +88,58 @@ showForm = () => {
         e.preventDefault();
         form.classList.toggle("form")
         form.classList.toggle("hidden")
+        bookContainer.style.opacity = 0
+        
         
       });
 }
+
+closeAddBookBtn.addEventListener("click", e => {
+    e.preventDefault();
+    form.classList.toggle("form")
+    form.classList.toggle("hidden")
+    bookContainer.innerHTML = "";
+    displayBooks();
+    clearForm();
+    bookContainer.style.opacity = 1
+    
+})
+
+
+getUserInputtedData = () => {
+    addBookSubmitButton.addEventListener("click", e => {
+        e.preventDefault();
+        let title = form.elements[0].value
+        let author = form.elements[1].value
+        let noPages = form.elements[2].value
+        let readOrNot = document.querySelector("input[name=hasbeenread]:checked").value;
+        const newBook = new Book(`${title}`, `${author}`, `${noPages}`,`${readOrNot}`);
+        library.push(newBook);
+        bookContainer.innerHTML = "";
+        displayBooks();
+        clearForm();
+        console.log(library)
+        console.log(newBook)
+        console.log(form.elements)
+    })
+}
+clearForm = () => {
+    form.elements[0].value = "";
+    form.elements[1].value = "";
+    form.elements[2].value = "";
+    form.elements[3].checked = false;
+    form.elements[4].checked = false;
+}
+
+
+
+closeAddBookBtn.innerText = "X"
+closeAddBookBtn.classList.add("close");
+form.appendChild(closeAddBookBtn);
+
 
 
 addBookToLibrary();
 displayBooks();
 showForm();
+getUserInputtedData();

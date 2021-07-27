@@ -53,9 +53,15 @@ h1{
     align-items: center;
     position: absolute;
     top: 100px;
+    z-index: 3;
     
     
 
+}
+.close{
+    position: absolute;
+    top:0;
+    left: 0;
 }
 .form input, button{
     padding: 1rem;
@@ -64,9 +70,13 @@ h1{
     width: fit-content;
 }
 .form input{
-    width:300px
+    width:300px;
+    padding: 2rem;
 }
 
 .hidden{
     opacity: 0;
+}
+.shown{
+    opacity: 1;
 }
