@@ -1,4 +1,9 @@
 let library = [];
+let lsLibrary = JSON.parse(localStorage.getItem("library"));
+library = [...lsLibrary]
+console.log(library)
+console.log(lsLibrary)
+
 const container = document.querySelector(".container");
 const bookContainer = document.createElement("div");
 const addBookBtn = document.createElement("button");
@@ -43,6 +48,7 @@ const joshBook = new Book(
   true
 );
 
+
 displayBooks = () => {
   library.forEach((book, i) => {
     const bookDiv = document.createElement("div");
@@ -52,13 +58,18 @@ displayBooks = () => {
         Number of Pages: ${book.numberOfPages} 
         Have i read the book?: ${book.read}`;
 
+    
+    
     //create delete button
     const deleteButton = document.createElement("button");
     deleteButton.innerText = "X";
     deleteButton.addEventListener("click", () => {
       library.splice(i, 1);
-      console.log(library);
       bookDiv.remove(i);
+      storeLibraryLocal();
+      library = [...lsLibrary]
+      
+
     });
     //create read button
     const readButton = document.createElement("button");
@@ -72,6 +83,8 @@ displayBooks = () => {
 
       bookContainer.innerHTML = "";
       displayBooks();
+      storeLibraryLocal();
+      library = [...lsLibrary]
 
       console.log(book);
     });
@@ -83,11 +96,15 @@ displayBooks = () => {
   container.appendChild(bookContainer);
 };
 
+
+
+
+
 addBookToLibrary = () => {
-  library.push(lordOfTheRings, harryPotter, joshBook);
+ 
+  
   addBookBtn.textContent = "Add New Book";
   addBookBtn.classList.add("addbtn");
-
   container.appendChild(addBookBtn);
 };
 
@@ -126,14 +143,13 @@ getUserInputtedData = () => {
       `${readOrNot}`
     );
     library.push(newBook);
+    
     bookContainer.innerHTML = "";
     displayBooks();
     clearForm();
     //create functionality where when user submits the form, it closes
     closeForm();
-    console.log(library);
-    console.log(newBook);
-    console.log(form.elements);
+    
   });
 };
 clearForm = () => {
@@ -150,8 +166,24 @@ closeForm = () => {
   bookContainer.innerHTML = "";
   displayBooks();
   clearForm();
+  storeLibraryLocal();
+  library = [...lsLibrary]
   bookContainer.style.opacity = 1;
 };
+
+//store library in local storage
+storeLibraryLocal = () => {
+  
+  localStorage.setItem("library", JSON.stringify(library));
+}
+
+getLocalStorage = () => {
+  let lsLibrary = localStorage.getItem("library");
+  return lsLibrary
+}
+
+
+
 
 
 
