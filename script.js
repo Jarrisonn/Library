@@ -62,8 +62,10 @@ displayBooks = () => {
     
     //create delete button
     const deleteButton = document.createElement("button");
-    deleteButton.innerText = "Delete";
+    
     deleteButton.classList.add("btn")
+    
+    deleteButton.innerHTML = `<i class="fas fa-trash"></i>`
     deleteButton.addEventListener("click", () => {
       library.splice(i, 1);
       bookDiv.remove(i);
@@ -123,8 +125,13 @@ showForm = () => {
     form.classList.toggle("form");
     form.classList.toggle("hidden");
     bookContainer.style.opacity = 0;
+    closeAddBookBtn.innerHTML = `<i class="fas fa-trash"></i>`
   });
 };
+
+
+
+
 
 closeAddBookBtn.addEventListener("click", (e) => {
   e.preventDefault();

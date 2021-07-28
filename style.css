@@ -2,7 +2,7 @@
     --main-colour: #4D4551;
     --book-colour: #6D5C61;
     --button-colour: #52484B;
-    --text-colour: #1A1919
+    --text-colour: #181818;
 }
 *{
     margin: 0;
@@ -22,7 +22,7 @@
     text-align: center;
 }
 h1{
-    color: black;
+    color: var(--text-colour);
     font-size: 2.5rem;
     font-weight: 700;
     padding: 2rem;
@@ -32,7 +32,7 @@ h1{
     background-color: var(--button-colour);
     border: none;
     border-radius: 10px;
-    color: rgb(243, 242, 242);
+    color: var(--text-colour);
     font-size: 1.2rem;
     cursor: pointer;
 
@@ -50,7 +50,7 @@ h1{
     align-items: center;
     padding: 1rem;
     line-height: 50px;
-    color: black;
+    color: var(--text-colour);
     opacity: 0.8;
     border-radius: 5%;
     font-family: inherit;
@@ -84,7 +84,7 @@ h1{
 .form{
     width: 600px;
     height: 600px; 
-    background-color: lightsalmon;
+    background-color: var(--book-colour);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -92,10 +92,44 @@ h1{
     position: absolute;
     top: 100px;
     z-index: 3;
+    color: var(--text-colour);
     
     
 
 }
+form button{
+    background-color: var(--button-colour);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.form input{
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+}
+
+form h2{
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+form label{
+    font-size: 2rem;
+}
+
+form input[type=radio]{
+    height: 2rem;
+    
+    background-color: var(--button-colour);
+}
+
+form input[type=radio]:checked{
+    background-color: var(--button-colour);
+}
+
 .close{
     position: absolute;
     top:0;
@@ -113,6 +147,8 @@ h1{
 }
 
 .hidden{
+    height:0;
+    width: 0;
     opacity: 0;
 }
 .shown{
