@@ -3,6 +3,7 @@
     --book-colour: #6D5C61;
     --button-colour: #52484B;
     --text-colour: #181818;
+    --input-colour: #857076; 
 }
 *{
     margin: 0;
@@ -23,7 +24,7 @@
 }
 h1{
     color: var(--text-colour);
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: 700;
     padding: 2rem;
 }
@@ -79,7 +80,7 @@ h1{
     cursor: pointer;
     z-index: 2;
     background-color: var(--button-colour);
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 }
 .form{
     width: 600px;
@@ -93,6 +94,7 @@ h1{
     top: 100px;
     z-index: 3;
     color: var(--text-colour);
+    border-radius: 10px;
     
     
 
@@ -107,9 +109,17 @@ form button{
 .form input{
     font-size: 1.2rem;
     border: none;
+    background-color: var(--main-colour);
+    color: var(--text-colour);
     border-radius: 10px;
     outline: none;
+    
 }
+
+form input::placeholder{
+    color: var(--text-colour);
+}
+
 
 form h2{
     font-size: 2rem;
