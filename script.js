@@ -62,7 +62,8 @@ displayBooks = () => {
     
     //create delete button
     const deleteButton = document.createElement("button");
-    deleteButton.innerText = "X";
+    deleteButton.innerText = "Delete";
+    deleteButton.classList.add("btn")
     deleteButton.addEventListener("click", () => {
       library.splice(i, 1);
       bookDiv.remove(i);
@@ -74,11 +75,19 @@ displayBooks = () => {
     //create read button
     const readButton = document.createElement("button");
     readButton.innerText = "Mark as read";
+    readButton.classList.add("btn")
+    if(book.read){
+      readButton.innerText = "Mark as Unread";
+    }else{
+      readButton.innerText = "Mark as Read"
+    }
     readButton.addEventListener("click", () => {
       if (book.read) {
         book.read = false;
+        
       } else {
         book.read = true;
+        
       }
 
       bookContainer.innerHTML = "";

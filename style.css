@@ -1,47 +1,85 @@
+:root{
+    --main-colour: #4D4551;
+    --book-colour: #6D5C61;
+    --button-colour: #52484B;
+    --text-colour: #1A1919
+}
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+
 }
 
 .container{
     height: 100vh;
     width: auto;
     display: flex;
-    background-color: #25382a;
+    background-color:  var(--main-colour);
     flex-direction: column;
     align-items: center;
     text-align: center;
 }
 h1{
-    color: lightgrey;
+    color: black;
+    font-size: 2.5rem;
+    font-weight: 700;
     padding: 2rem;
+}
+
+.btn{
+    background-color: var(--button-colour);
+    border: none;
+    border-radius: 10px;
+    color: rgb(243, 242, 242);
+    font-size: 1.2rem;
+    cursor: pointer;
+
 }
 
 
 .book{
     height: fit-content;
-    width: fit-content;
+    min-width: fit-content;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
     padding: 1rem;
-    color: lightgrey;
+    line-height: 50px;
+    color: black;
     opacity: 0.8;
     border-radius: 5%;
-    border: 2px solid black;
+    font-family: inherit;
+    flex-grow: 1;
+    font-size: 1.5rem;
+    background-color: var(--book-colour);
+    
 }
 
 .bookcontainer{
     display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
     justify-content: space-around;
-    width: 100vw;
+    min-width: fit-content;
+    max-width: auto;
 }
 
 .addbtn{
-    padding: 1rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 10px;
     margin-bottom: 2rem;
     height: fit-content;
     width: fit-content;
     cursor: pointer;
     z-index: 2;
+    background-color: var(--button-colour);
+    font-size: 1.2rem;
 }
 .form{
     width: 600px;
