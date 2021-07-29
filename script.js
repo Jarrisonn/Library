@@ -1,6 +1,9 @@
 let library = [];
 let lsLibrary = JSON.parse(localStorage.getItem("library"));
-library = [...lsLibrary]
+if(lsLibrary){
+  library = [...lsLibrary]
+}
+
 console.log(library)
 console.log(lsLibrary)
 
@@ -183,7 +186,10 @@ closeForm = () => {
   displayBooks();
   clearForm();
   storeLibraryLocal();
-  library = [...lsLibrary]
+  if(lsLibrary){
+    library = [...lsLibrary]
+  }
+  
   bookContainer.style.opacity = 1;
 };
 
