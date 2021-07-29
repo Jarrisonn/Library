@@ -109,7 +109,7 @@ form button{
 .form input{
     font-size: 1.2rem;
     border: none;
-    background-color: var(--main-colour);
+    background-color: var(--button-colour);
     color: var(--text-colour);
     border-radius: 10px;
     outline: none;
