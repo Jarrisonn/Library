@@ -22,14 +22,16 @@ const addBookSubmitButton = document.getElementById("submitbook");
 
 bookContainer.classList.add("bookcontainer");
 
-function Book(title, author, numberOfPages, read) {
-  this.title = title;
-  this.author = author;
-  this.numberOfPages = numberOfPages;
-  this.read = read;
-  this.info = () => {
+class Book{
+  constructor(title, author, numberOfPages, read){
+    this.title = title;
+    this.author = author;
+    this.numberOfPages = numberOfPages;
+    this.read = read;
+  }
+  info(){
     return `${this.title}, ${this.author}, ${this.numberOfPages}, ${this.read} `;
-  };
+  }
 }
 
 const lordOfTheRings = new Book(
